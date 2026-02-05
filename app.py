@@ -1,5 +1,5 @@
 import streamlit as st
-from PIL import Image
+from PIL import Image, ImageFilter
 from io import BytesIO
 import random
 import zipfile
@@ -498,19 +498,19 @@ with tab4:
                     blur_radius = int((strength / 100) * 50)
                     if blur_radius % 2 == 0:
                         blur_radius += 1
-                    blurred_img = img.filter(Image.ImageFilter.GaussianBlur(radius=blur_radius))
+                    blurred_img = img.filter(ImageFilter.GaussianBlur(radius=blur_radius))
                 
                 elif blur_type == "ボックスブラー":
                     blur_radius = int((strength / 100) * 50)
                     if blur_radius % 2 == 0:
                         blur_radius += 1
-                    blurred_img = img.filter(Image.ImageFilter.BoxBlur(blur_radius))
+                    blurred_img = img.filter(ImageFilter.BoxBlur(blur_radius))
                 
                 elif blur_type == "メディアンフィルタ":
                     blur_radius = int((strength / 100) * 50)
                     if blur_radius % 2 == 0:
                         blur_radius += 1
-                    blurred_img = img.filter(Image.ImageFilter.MedianFilter(size=blur_radius))
+                    blurred_img = img.filter(ImageFilter.MedianFilter(size=blur_radius))
                 
                 blurred_images.append(blurred_img)
                 
